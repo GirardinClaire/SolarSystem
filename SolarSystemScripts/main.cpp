@@ -99,9 +99,12 @@ int main()
 
     Camera camera(width, height);
     camera.setFoV(90);
-    camera.position = glm::vec3(-20., 10., 0.);
-    camera.horizontalAngle = M_PI/2;
-    camera.verticalAngle = 12.0;
+//    camera.position = glm::vec3(-20., 10., 0.);
+//    camera.horizontalAngle = M_PI/2;
+//    camera.verticalAngle = 12.0;
+    camera.position = glm::vec3(-3.1, 2.4, 1.3);
+    camera.horizontalAngle = 1.57;
+    camera.verticalAngle = 12.23;
     camera.computeMatrices(width, height);
 
     NavigationControls controls(window, &camera);
@@ -114,59 +117,60 @@ int main()
     stars.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////// Soleil ////////////
-    Planete sun((path+"/obj/planete.obj").c_str(), path+ "/textures/sun.jpg", 0., 0., 0., 0.5);
+    Planete sun((path+"/obj/planete.obj").c_str(), path+ "/textures/sun.jpg", 0., 0., 0., 0.2);
     sun.updatePosition(0);
     sun.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////////////////// Planètes ////////////////////////
 
-    //////////// Définition des semiMajorAxis, eccentricity et angularVelocity des différentes planètes ////////////
+//    //////////// Définition des semiMajorAxis, eccentricity et angularVelocity des différentes planètes ////////////
     std::vector<double> semiMajorAxis_   = {0.390, 0.720, 1.000, 0., 1.520, 5.200, 9.580, 19.22, 30.05};
     std::vector<double> eccentricity_    = {0.206, 0.007, 0.017, 0., 0.093, 0.049, 0.057, 0.046, 0.010};
-    std::vector<double> angularVelocity_ = {1.240, 0.620, 1.000, 0., 0.520, 0.080, 0.034, 0.021, 0.011};
+    std::vector<double> angularVelocity_ = {1.240, 1.170, 1.000, 0., 0.520, 0.080, 0.034, 0.010, 0.006};
+    std::vector<double> scale_           = {0.040, 0.090, 0.100, 0., 0.053, 0.500, 0.400, 0.200, 0.200};
 
     //////////// Planète mercury ////////////
-    Planete mercury((path+"/obj/planete.obj").c_str(), path+ "/textures/mercury.jpg", semiMajorAxis_[0], eccentricity_[0], angularVelocity_[0]);
+    Planete mercury((path+"/obj/planete.obj").c_str(), path+ "/textures/mercury.jpg", semiMajorAxis_[0], eccentricity_[0], angularVelocity_[0], scale_[0]);
     mercury.updatePosition(0); // Mettre à jour la position en fonction du temps: initialisation à t0 = 0
     mercury.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////// Planète venus ////////////
-    Planete venus((path+"/obj/planete.obj").c_str(), path+ "/textures/venus.jpg", semiMajorAxis_[1], eccentricity_[1], angularVelocity_[1]);
+    Planete venus((path+"/obj/planete.obj").c_str(), path+ "/textures/venus.jpg", semiMajorAxis_[1], eccentricity_[1], angularVelocity_[1], scale_[1]);
     venus.updatePosition(0);
     venus.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////// Planète earth ////////////
-    Planete earth((path+"/obj/planete.obj").c_str(), path+ "/textures/earth.jpg", semiMajorAxis_[2], eccentricity_[2], angularVelocity_[2]);
+    Planete earth((path+"/obj/planete.obj").c_str(), path+ "/textures/earth.jpg", semiMajorAxis_[2], eccentricity_[2], angularVelocity_[2], scale_[2]);
     earth.updatePosition(0);
     earth.rotationAngles = glm::vec3(0, 0, 0);
 
 //    //////////// Planète Moon ////////////
-//    Planete moon((path+"/obj/planete.obj").c_str(), path+ "/textures/moon.jpg", semiMajorAxis_[3], eccentricity_[3], angularVelocity_[3]);
+//    Planete moon((path+"/obj/planete.obj").c_str(), path+ "/textures/moon.jpg", semiMajorAxis_[3], eccentricity_[3], angularVelocity_[3], scale_[3]);
 //    moon.updatePosition(0);
 //    moon.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////// Planète mars ////////////
-    Planete mars((path+"/obj/planete.obj").c_str(), path+ "/textures/mars.jpg", semiMajorAxis_[4], eccentricity_[4], angularVelocity_[4]);
+    Planete mars((path+"/obj/planete.obj").c_str(), path+ "/textures/mars.jpg", semiMajorAxis_[4], eccentricity_[4], angularVelocity_[4], scale_[4]);
     mars.updatePosition(0);
     mars.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////// Planète jupiter ////////////
-    Planete jupiter((path+"/obj/planete.obj").c_str(), path+ "/textures/jupiter.jpg", semiMajorAxis_[5], eccentricity_[5], angularVelocity_[5]);
+    Planete jupiter((path+"/obj/planete.obj").c_str(), path+ "/textures/jupiter.jpg", semiMajorAxis_[5], eccentricity_[5], angularVelocity_[5], scale_[5]);
     jupiter.updatePosition(0);
     jupiter.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////// Planète saturn ////////////
-    Planete saturn((path+"/obj/planete.obj").c_str(), path+ "/textures/saturn.jpg", semiMajorAxis_[6], eccentricity_[6], angularVelocity_[6]);
+    Planete saturn((path+"/obj/planete.obj").c_str(), path+ "/textures/saturn.jpg", semiMajorAxis_[6], eccentricity_[6], angularVelocity_[6], scale_[6]);
     saturn.updatePosition(0);
     saturn.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////// Planète uranus ////////////
-    Planete uranus((path+"/obj/planete.obj").c_str(), path+ "/textures/uranus.jpg", semiMajorAxis_[7], eccentricity_[7], angularVelocity_[7]);
+    Planete uranus((path+"/obj/planete.obj").c_str(), path+ "/textures/uranus.jpg", semiMajorAxis_[7], eccentricity_[7], angularVelocity_[7], scale_[7]);
     uranus.updatePosition(0);
     uranus.rotationAngles = glm::vec3(0, 0, 0);
 
     //////////// Planète neptune ////////////
-    Planete neptune((path+"/obj/planete.obj").c_str(), path+ "/textures/neptune.jpg", semiMajorAxis_[8], eccentricity_[8], angularVelocity_[8]);
+    Planete neptune((path+"/obj/planete.obj").c_str(), path+ "/textures/neptune.jpg", semiMajorAxis_[8], eccentricity_[8], angularVelocity_[8], scale_[8]);
     neptune.updatePosition(0);
     neptune.rotationAngles = glm::vec3(0, 0, 0);
 
