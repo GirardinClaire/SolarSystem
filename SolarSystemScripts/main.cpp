@@ -112,15 +112,11 @@ int main()
     Planete stars((path+"/obj/planete.obj").c_str(), path+ "/textures/stars.jpg", 0., 0., 0., 100.);
     stars.updatePosition(0); // position de l'élément
     stars.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_stars = stars.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_stars);
 
     //////////// Soleil ////////////
     Planete sun((path+"/obj/planete.obj").c_str(), path+ "/textures/sun.jpg", 0., 0., 0., 0.5);
     sun.updatePosition(0);
     sun.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_sun = sun.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_sun);
 
     //////////////////////// Planètes ////////////////////////
 
@@ -133,66 +129,46 @@ int main()
     Planete mercury((path+"/obj/planete.obj").c_str(), path+ "/textures/mercury.jpg", semiMajorAxis_[0], eccentricity_[0], angularVelocity_[0]);
     mercury.updatePosition(0); // Mettre à jour la position en fonction du temps: initialisation à t0 = 0
     mercury.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_mercury = mercury.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_mercury);
 
     //////////// Planète venus ////////////
     Planete venus((path+"/obj/planete.obj").c_str(), path+ "/textures/venus.jpg", semiMajorAxis_[1], eccentricity_[1], angularVelocity_[1]);
     venus.updatePosition(0);
     venus.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_venus = venus.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_venus);
 
     //////////// Planète earth ////////////
     Planete earth((path+"/obj/planete.obj").c_str(), path+ "/textures/earth.jpg", semiMajorAxis_[2], eccentricity_[2], angularVelocity_[2]);
     earth.updatePosition(0);
     earth.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_earth = earth.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_earth);
 
 //    //////////// Planète Moon ////////////
 //    Planete moon((path+"/obj/planete.obj").c_str(), path+ "/textures/moon.jpg", semiMajorAxis_[3], eccentricity_[3], angularVelocity_[3]);
 //    moon.updatePosition(0);
 //    moon.rotationAngles = glm::vec3(0, 0, 0);
-//    glm::mat4 MVP_moon = moon.getModelViewProjectionMatrix(camera);
-//    shader.setUniformMat4f("MVP", MVP_moon);
 
     //////////// Planète mars ////////////
     Planete mars((path+"/obj/planete.obj").c_str(), path+ "/textures/mars.jpg", semiMajorAxis_[4], eccentricity_[4], angularVelocity_[4]);
     mars.updatePosition(0);
     mars.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_mars = mars.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_mars);
 
     //////////// Planète jupiter ////////////
     Planete jupiter((path+"/obj/planete.obj").c_str(), path+ "/textures/jupiter.jpg", semiMajorAxis_[5], eccentricity_[5], angularVelocity_[5]);
     jupiter.updatePosition(0);
     jupiter.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_jupiter = jupiter.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_jupiter);
 
     //////////// Planète saturn ////////////
     Planete saturn((path+"/obj/planete.obj").c_str(), path+ "/textures/saturn.jpg", semiMajorAxis_[6], eccentricity_[6], angularVelocity_[6]);
     saturn.updatePosition(0);
     saturn.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_saturn = saturn.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_saturn);
 
     //////////// Planète uranus ////////////
     Planete uranus((path+"/obj/planete.obj").c_str(), path+ "/textures/uranus.jpg", semiMajorAxis_[7], eccentricity_[7], angularVelocity_[7]);
     uranus.updatePosition(0);
     uranus.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_uranus = uranus.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_uranus);
 
     //////////// Planète neptune ////////////
     Planete neptune((path+"/obj/planete.obj").c_str(), path+ "/textures/neptune.jpg", semiMajorAxis_[8], eccentricity_[8], angularVelocity_[8]);
     neptune.updatePosition(0);
     neptune.rotationAngles = glm::vec3(0, 0, 0);
-    glm::mat4 MVP_neptune = neptune.getModelViewProjectionMatrix(camera);
-    shader.setUniformMat4f("MVP", MVP_neptune);
-
-
 
 
     /////////////////////////Boucle de rendu/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -211,6 +187,7 @@ int main()
 
     float lastTime = glfwGetTime();
     float currentTime, deltaTime;
+    glm::mat4 MVP;
 
     // Boucle de rendu
     while(glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && !glfwWindowShouldClose(window)){
@@ -229,36 +206,36 @@ int main()
         // Stars
         stars.position = camera.position;
         stars.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_stars = stars.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_stars);
+        MVP = stars.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, stars, shader); // vider les buffers
 
         // Soleil
         sun.updatePosition(0); // car le soleil ne bouge pas
         sun.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_sun = sun.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_sun);
-        renderer.Draw(vArray, sun, shader); // vider les buffers
+        MVP = sun.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
+        renderer.Draw(vArray, sun, shader);
 
         // Planète mercury
         mercury.updatePosition(currentTime);
         mercury.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_mercury = mercury.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_mercury);
+        MVP = mercury.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, mercury, shader);
 
         // Planète venus
         venus.updatePosition(currentTime);
         venus.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_venus = venus.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_venus);
+        MVP = venus.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, venus, shader);
 
         // Planète earth
         earth.updatePosition(currentTime);
         earth.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_earth = earth.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_earth);
+        MVP = earth.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, earth, shader);
 
         // Moon
@@ -266,36 +243,36 @@ int main()
         // Planète mars
         mars.updatePosition(currentTime);
         mars.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_mars = mars.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_mars);
+        MVP = mars.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, mars, shader);
 
         // Planète jupiter
         jupiter.updatePosition(currentTime);
         jupiter.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_jupiter = jupiter.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_jupiter);
+        MVP = jupiter.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, jupiter, shader);
 
         // Planète saturn
         saturn.updatePosition(currentTime);
         saturn.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_saturn = saturn.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_saturn);
+        MVP = saturn.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, saturn, shader);
 
         // Planète uranus
         uranus.updatePosition(currentTime);
         uranus.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_uranus = uranus.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_uranus);
+        MVP = uranus.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, uranus, shader);
 
         // Planète neptune
         neptune.updatePosition(currentTime);
         neptune.rotationAngles = glm::vec3(0, 0, 0);
-        MVP_neptune = neptune.getModelViewProjectionMatrix(camera);
-        shader.setUniformMat4f("MVP", MVP_neptune);
+        MVP = neptune.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP);
         renderer.Draw(vArray, neptune, shader);
 
 
