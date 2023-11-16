@@ -109,7 +109,7 @@ int main()
     /////////////////////////Création des formes à afficher//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //////////// Stars ////////////
-    Planete stars((path+"/obj/planete.obj").c_str(), path+ "/textures/stars.jpg", 0., 0., 0., 70.);
+    Planete stars((path+"/obj/planete.obj").c_str(), path+ "/textures/stars.jpg", 0., 0., 0., 100.);
     stars.updatePosition(0); // position de l'élément
     stars.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_stars = stars.getModelViewProjectionMatrix(camera);
