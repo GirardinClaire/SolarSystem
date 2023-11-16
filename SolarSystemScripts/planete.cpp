@@ -29,4 +29,3 @@ void Planete::updatePosition(double time) {
 
 
 
-
