@@ -51,7 +51,7 @@ glm::mat4 Object::getModelMatrix()
 }
 
 
-Object::Object(const char *path, std::string texturePath)
+Object::Object(const char *path, std::string texturePath, double scale_)
 {
     std::vector<glm::vec3> vertices;
     std::vector<glm::vec2> uvs;
@@ -63,7 +63,17 @@ Object::Object(const char *path, std::string texturePath)
         std::cout<<"Le chargemet du fichier OBJ "<<path<<" a échoué ..."<<std::endl;
     }
 
-    m_vb = new VertexBuffer(vertices);
+    // Créer une copie de vertices pour appliquer le facteur d'échelle
+    std::vector<glm::vec3> scaledVertices = vertices;
+    // Appliquer le facteur d'échelle à chaque élément
+    for (auto& vertex : scaledVertices) {
+        vertex.x *= scale_;
+        vertex.y *= scale_;
+        vertex.z *= scale_;
+    }
+    // Utiliser scaledVertices pour créer le VertexBuffer
+    m_vb = new VertexBuffer(scaledVertices);
+
     m_uvsb = new UVBuffer(uvs);
 
     m_texture = new Texture(texturePath);

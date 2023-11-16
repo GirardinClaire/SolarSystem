@@ -108,71 +108,85 @@ int main()
 
     /////////////////////////Création des formes à afficher//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //////////// Stars ////////////
+    Planete stars((path+"/obj/planete.obj").c_str(), path+ "/textures/stars.jpg", 0., 0., 0., 70.);
+    stars.updatePosition(0); // position de l'élément
+    stars.rotationAngles = glm::vec3(0, 0, 0);
+    glm::mat4 MVP_stars = stars.getModelViewProjectionMatrix(camera);
+    shader.setUniformMat4f("MVP", MVP_stars);
+
     //////////// Soleil ////////////
-    Planete sun((path+"/obj/planete.obj").c_str(), path+ "/textures/sun.jpg", 0., 0., 0.);
-    sun.updatePosition(0); // Mettre à jour la position en fonction du temps: initialisation à t0 = 0
+    Planete sun((path+"/obj/planete.obj").c_str(), path+ "/textures/sun.jpg", 0., 0., 0., 0.5);
+    sun.updatePosition(0);
     sun.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_sun = sun.getModelViewProjectionMatrix(camera);
     shader.setUniformMat4f("MVP", MVP_sun);
 
+    //////////////////////// Planètes ////////////////////////
+
+    //////////// Définition des semiMajorAxis, eccentricity et angularVelocity des différentes planètes ////////////
+    std::vector<double> semiMajorAxis_   = {0.390, 0.720, 1.000, 0., 1.520, 5.200, 9.580, 19.22, 30.05};
+    std::vector<double> eccentricity_    = {0.206, 0.007, 0.017, 0., 0.093, 0.049, 0.057, 0.046, 0.010};
+    std::vector<double> angularVelocity_ = {1.240, 0.620, 1.000, 0., 0.520, 0.080, 0.034, 0.021, 0.011};
+
     //////////// Planète mercury ////////////
-    Planete mercury((path+"/obj/planete.obj").c_str(), path+ "/textures/mercury.jpg", 0.39, 0.206, 1.24);
-    mercury.updatePosition(0);
+    Planete mercury((path+"/obj/planete.obj").c_str(), path+ "/textures/mercury.jpg", semiMajorAxis_[0], eccentricity_[0], angularVelocity_[0]);
+    mercury.updatePosition(0); // Mettre à jour la position en fonction du temps: initialisation à t0 = 0
     mercury.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_mercury = mercury.getModelViewProjectionMatrix(camera);
     shader.setUniformMat4f("MVP", MVP_mercury);
 
     //////////// Planète venus ////////////
-    Planete venus((path+"/obj/planete.obj").c_str(), path+ "/textures/venus.jpg", 0.72, 0.007, 0.62);
+    Planete venus((path+"/obj/planete.obj").c_str(), path+ "/textures/venus.jpg", semiMajorAxis_[1], eccentricity_[1], angularVelocity_[1]);
     venus.updatePosition(0);
     venus.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_venus = venus.getModelViewProjectionMatrix(camera);
     shader.setUniformMat4f("MVP", MVP_venus);
 
     //////////// Planète earth ////////////
-    Planete earth((path+"/obj/planete.obj").c_str(), path+ "/textures/earth.jpg", 1.00, 0.017, 1.00);
+    Planete earth((path+"/obj/planete.obj").c_str(), path+ "/textures/earth.jpg", semiMajorAxis_[2], eccentricity_[2], angularVelocity_[2]);
     earth.updatePosition(0);
     earth.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_earth = earth.getModelViewProjectionMatrix(camera);
     shader.setUniformMat4f("MVP", MVP_earth);
 
 //    //////////// Planète Moon ////////////
-//    Planete moon((path+"/obj/planete.obj").c_str(), path+ "/textures/moon.jpg", *10, , );
+//    Planete moon((path+"/obj/planete.obj").c_str(), path+ "/textures/moon.jpg", semiMajorAxis_[3], eccentricity_[3], angularVelocity_[3]);
 //    moon.updatePosition(0);
 //    moon.rotationAngles = glm::vec3(0, 0, 0);
 //    glm::mat4 MVP_moon = moon.getModelViewProjectionMatrix(camera);
 //    shader.setUniformMat4f("MVP", MVP_moon);
 
     //////////// Planète mars ////////////
-    Planete mars((path+"/obj/planete.obj").c_str(), path+ "/textures/mars.jpg", 1.52, 0.093, 0.52);
+    Planete mars((path+"/obj/planete.obj").c_str(), path+ "/textures/mars.jpg", semiMajorAxis_[4], eccentricity_[4], angularVelocity_[4]);
     mars.updatePosition(0);
     mars.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_mars = mars.getModelViewProjectionMatrix(camera);
     shader.setUniformMat4f("MVP", MVP_mars);
 
     //////////// Planète jupiter ////////////
-    Planete jupiter((path+"/obj/planete.obj").c_str(), path+ "/textures/jupiter.jpg", 5.20, 0.049, 0.08);
+    Planete jupiter((path+"/obj/planete.obj").c_str(), path+ "/textures/jupiter.jpg", semiMajorAxis_[5], eccentricity_[5], angularVelocity_[5]);
     jupiter.updatePosition(0);
     jupiter.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_jupiter = jupiter.getModelViewProjectionMatrix(camera);
     shader.setUniformMat4f("MVP", MVP_jupiter);
 
     //////////// Planète saturn ////////////
-    Planete saturn((path+"/obj/planete.obj").c_str(), path+ "/textures/saturn.jpg", 9.58, 0.057, 0.03);
+    Planete saturn((path+"/obj/planete.obj").c_str(), path+ "/textures/saturn.jpg", semiMajorAxis_[6], eccentricity_[6], angularVelocity_[6]);
     saturn.updatePosition(0);
     saturn.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_saturn = saturn.getModelViewProjectionMatrix(camera);
     shader.setUniformMat4f("MVP", MVP_saturn);
 
     //////////// Planète uranus ////////////
-    Planete uranus((path+"/obj/planete.obj").c_str(), path+ "/textures/uranus.jpg", 19.22, 0.046, 0.01);
+    Planete uranus((path+"/obj/planete.obj").c_str(), path+ "/textures/uranus.jpg", semiMajorAxis_[7], eccentricity_[7], angularVelocity_[7]);
     uranus.updatePosition(0);
     uranus.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_uranus = uranus.getModelViewProjectionMatrix(camera);
     shader.setUniformMat4f("MVP", MVP_uranus);
 
     //////////// Planète neptune ////////////
-    Planete neptune((path+"/obj/planete.obj").c_str(), path+ "/textures/neptune.jpg", 30.05, 0.010, 0.01);
+    Planete neptune((path+"/obj/planete.obj").c_str(), path+ "/textures/neptune.jpg", semiMajorAxis_[8], eccentricity_[8], angularVelocity_[8]);
     neptune.updatePosition(0);
     neptune.rotationAngles = glm::vec3(0, 0, 0);
     glm::mat4 MVP_neptune = neptune.getModelViewProjectionMatrix(camera);
@@ -183,7 +197,7 @@ int main()
 
     /////////////////////////Boucle de rendu/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Activation du culling : Cull triangles which normal is not towards the camera
-    glEnable(GL_CULL_FACE);
+    // glEnable(GL_CULL_FACE);
 
     // Assure que l'on peut capturer les touche de clavier
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
@@ -211,6 +225,13 @@ int main()
 
         // Effacez l'image précédente une seule fois en dehors de la boucle de rendu
         renderer.Clear();
+
+        // Stars
+        stars.position = camera.position;
+        stars.rotationAngles = glm::vec3(0, 0, 0);
+        MVP_stars = stars.getModelViewProjectionMatrix(camera);
+        shader.setUniformMat4f("MVP", MVP_stars);
+        renderer.Draw(vArray, stars, shader); // vider les buffers
 
         // Soleil
         sun.updatePosition(0); // car le soleil ne bouge pas

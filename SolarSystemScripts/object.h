@@ -22,7 +22,7 @@ private:
     bool loadOBJ(const char *path, std::vector<glm::vec3> &out_vertices, std::vector<glm::vec2> &out_uvs, std::vector<glm::vec3> &out_normals);
 public:
     Object(std::vector< glm::vec3 > vertices, std::vector< glm::vec2 > uvs, std::string texturePath);
-    Object(const char *path, std::string texturePath);
+    Object(const char *path, std::string texturePath, double scale_);
     ~Object();
     void Bind() const;
     void Unbind() const;
