@@ -297,6 +297,30 @@ planete.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SolarSystem.dir/build.make CMakeFiles/SolarSystem.dir/planete.cpp.s
 .PHONY : planete.cpp.s
 
+pointLight.o: pointLight.cpp.o
+.PHONY : pointLight.o
+
+# target to build an object file
+pointLight.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SolarSystem.dir/build.make CMakeFiles/SolarSystem.dir/pointLight.cpp.o
+.PHONY : pointLight.cpp.o
+
+pointLight.i: pointLight.cpp.i
+.PHONY : pointLight.i
+
+# target to preprocess a source file
+pointLight.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SolarSystem.dir/build.make CMakeFiles/SolarSystem.dir/pointLight.cpp.i
+.PHONY : pointLight.cpp.i
+
+pointLight.s: pointLight.cpp.s
+.PHONY : pointLight.s
+
+# target to generate assembly for a file
+pointLight.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SolarSystem.dir/build.make CMakeFiles/SolarSystem.dir/pointLight.cpp.s
+.PHONY : pointLight.cpp.s
+
 renderer.o: renderer.cpp.o
 .PHONY : renderer.o
 
@@ -495,6 +519,9 @@ help:
 	@echo "... planete.o"
 	@echo "... planete.i"
 	@echo "... planete.s"
+	@echo "... pointLight.o"
+	@echo "... pointLight.i"
+	@echo "... pointLight.s"
 	@echo "... renderer.o"
 	@echo "... renderer.i"
 	@echo "... renderer.s"

@@ -1,12 +1,23 @@
 #version 330 core
 
 in vec2 UV;
-
-uniform sampler2D myTextureSampler;
+in vec4 objLum;
+in vec4 vecNormal;
+in vec4 objCamDir;
 
 out vec3 color;
 
+uniform sampler2D myTextureSampler;
+
+uniform vec3 ambientLightColor;
+uniform float intensityLight;
+
+
 void main(){
-    color = texture(myTextureSampler,UV).rgb;
+
+    // Lumière ambiante
+    color = texture(myTextureSampler, UV).rgb * ambientLightColor * intensityLight;
+
+
 
 }

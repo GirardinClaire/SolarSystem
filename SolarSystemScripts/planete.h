@@ -9,7 +9,6 @@ class Planete : public Object
 public:
     Planete(const char *path, std::string texturePath, double semiMajorAxis, double eccentricity_mercury, double angularVelocity_mercury, double scale=1.0);
     glm::mat4 getModelViewProjectionMatrix(const Camera& camera);
-//    void UpdateScale(float scale);
     void updatePosition(double time);
 
 private:

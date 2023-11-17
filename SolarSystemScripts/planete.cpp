@@ -3,7 +3,7 @@
 
 Planete::Planete(const char *path, std::string texturePath, double semiMajorAxis_, double eccentricity_, double angularVelocity_, double scale_)
     : Object(path, texturePath, scale_), semiMajorAxis(semiMajorAxis_), eccentricity(eccentricity_), angularVelocity(angularVelocity_) {
-//    semiMajorAxis = semiMajorAxis_*2;
+    semiMajorAxis = semiMajorAxis_*1;
     eccentricity = eccentricity_*1;
     angularVelocity= angularVelocity_*1;
     scale = scale_*pow(10,-4);

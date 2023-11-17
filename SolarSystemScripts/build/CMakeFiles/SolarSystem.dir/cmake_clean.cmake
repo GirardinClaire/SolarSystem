@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SolarSystem.dir/object.cpp.o.d"
   "CMakeFiles/SolarSystem.dir/planete.cpp.o"
   "CMakeFiles/SolarSystem.dir/planete.cpp.o.d"
+  "CMakeFiles/SolarSystem.dir/pointLight.cpp.o"
+  "CMakeFiles/SolarSystem.dir/pointLight.cpp.o.d"
   "CMakeFiles/SolarSystem.dir/renderer.cpp.o"
   "CMakeFiles/SolarSystem.dir/renderer.cpp.o.d"
   "CMakeFiles/SolarSystem.dir/shader.cpp.o"

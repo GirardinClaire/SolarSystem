@@ -25,6 +25,7 @@ add_executable(SolarSystem main.cpp
                 navigationcontrols.h navigationcontrols.cpp
                 fpscontrols.h fpscontrols.cpp
                 planete.h planete.cpp
+                pointLight.h pointLight.cpp
               )
 
 # Link OpenGL libraries

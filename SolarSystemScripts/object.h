@@ -4,9 +4,7 @@
 #include <iostream>
 #include <vector>
 
-// #include "glm/glm.hpp"
 #include "vertexbuffer.h"
-// #include "vertexarray.h"
 #include "uvbuffer.h"
 #include "texture.h"
 

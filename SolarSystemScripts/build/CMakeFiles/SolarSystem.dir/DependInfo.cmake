@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/navigationcontrols.cpp" "CMakeFiles/SolarSystem.dir/navigationcontrols.cpp.o" "gcc" "CMakeFiles/SolarSystem.dir/navigationcontrols.cpp.o.d"
   "/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/object.cpp" "CMakeFiles/SolarSystem.dir/object.cpp.o" "gcc" "CMakeFiles/SolarSystem.dir/object.cpp.o.d"
   "/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/planete.cpp" "CMakeFiles/SolarSystem.dir/planete.cpp.o" "gcc" "CMakeFiles/SolarSystem.dir/planete.cpp.o.d"
+  "/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/pointLight.cpp" "CMakeFiles/SolarSystem.dir/pointLight.cpp.o" "gcc" "CMakeFiles/SolarSystem.dir/pointLight.cpp.o.d"
   "/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/renderer.cpp" "CMakeFiles/SolarSystem.dir/renderer.cpp.o" "gcc" "CMakeFiles/SolarSystem.dir/renderer.cpp.o.d"
   "/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/shader.cpp" "CMakeFiles/SolarSystem.dir/shader.cpp.o" "gcc" "CMakeFiles/SolarSystem.dir/shader.cpp.o.d"
   "/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/stb_image.cpp" "CMakeFiles/SolarSystem.dir/stb_image.cpp.o" "gcc" "CMakeFiles/SolarSystem.dir/stb_image.cpp.o.d"
