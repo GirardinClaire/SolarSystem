@@ -109,14 +109,14 @@ int main()
 
     /////////////////////////On crée un point de lumière/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     glm::vec3 lightPosition(0., 0., 0.);
-    glm::vec3 lightColor(0.2f, 0.2f, 0.5f);
+    glm::vec3 lightColor(1.f, 1.f, 1.f);
     float lightPower = 3.f;
     float reflectivity = 10.0f;
     PointLight pointlight(lightPosition, lightColor, lightPower, reflectivity);
     pointlight.Bind(&shader);
 
     // Lumiere ambiante
-    shader.setUniform1f("intensityLight", 3.f);
+    shader.setUniform1f("intensityLight", 6.f);
     shader.setUniform3fv("ambientLightColor", glm::vec3(0.2f, 0.2f, 0.5f));
 
 

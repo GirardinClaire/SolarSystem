@@ -44,6 +44,6 @@ void Camera::setFoV(float a)
 
 void Camera::Bind(Shader *shader) const
 {
-    shader->setUniform3fv("cameraPosition", position);
+    shader->setUniform3fv("camPosition", position);
 }
 

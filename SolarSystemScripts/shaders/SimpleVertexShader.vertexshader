@@ -11,7 +11,7 @@ out vec4 ObjCamDir;
 uniform mat4 MVP;
 uniform mat4 m;
 uniform vec3 LightPosition;
-uniform vec3 cameraPosition;
+uniform vec3 camPosition;
 
 
 void main(){
@@ -25,6 +25,6 @@ void main(){
     ObjLight = LightPosition - (m * vec4(vertexPosition_modelspace, 1.0));
 
     //Caméra
-    ObjCamDir = vec4(cameraPosition - (vec3(m * vec4(vertexPosition_modelspace, 1.0))), 0);
+    ObjCamDir = vec4(camPosition - (vec3(m * vec4(vertexPosition_modelspace, 1.0))), 0);
 
 }
