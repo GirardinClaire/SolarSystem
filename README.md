@@ -13,6 +13,6 @@ Système Solaire en C++/OpenGL
 
 [ AMELIORATIONS ]
 
-Par la suite j'aimerais réussir à faire foncitonner les lumières diffuse et spéculaire, et également intégrer une interface pour l'utilisateur.
+Par la suite j'aimerais réussir à faire fonctionner les lumières diffuse et spéculaire, et également intégrer une interface pour l'utilisateur.
 
 
