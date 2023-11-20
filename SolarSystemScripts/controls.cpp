@@ -15,3 +15,5 @@ void Controls::setMouseSpeed(float newMouseSpeed)
 {
     mouseSpeed = newMouseSpeed;
 }
+
+

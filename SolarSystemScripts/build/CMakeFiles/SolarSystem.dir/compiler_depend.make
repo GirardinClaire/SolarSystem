@@ -1494,6 +1494,7 @@ CMakeFiles/SolarSystem.dir/main.cpp.o: /Users/ClaireGirardin/Documents/ING3/TSI/
   /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/navigationcontrols.h \
   /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/object.h \
   /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/planete.h \
+  /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/pointLight.h \
   /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/renderer.h \
   /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/shader.h \
   /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/texture.h \
@@ -5885,8 +5886,6 @@ CMakeFiles/SolarSystem.dir/vertexbuffer.cpp.o: /Users/ClaireGirardin/Documents/I
 
 /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/renderer.cpp:
 
-/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/pointLight.h:
-
 /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/planete.cpp:
 
 /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/navigationcontrols.cpp:
@@ -5894,6 +5893,8 @@ CMakeFiles/SolarSystem.dir/vertexbuffer.cpp.o: /Users/ClaireGirardin/Documents/I
 /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/uvbuffer.h:
 
 /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/renderer.h:
+
+/Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/pointLight.h:
 
 /Users/ClaireGirardin/Documents/ING3/TSI/OpenGL/SolarSystem/SolarSystemScripts/planete.h:
 

@@ -12,6 +12,7 @@
 #include "camera.h"
 #include "navigationcontrols.h"
 #include "planete.h"
+#include "pointLight.h"
 
 
 using namespace std;
@@ -106,6 +107,21 @@ int main()
 
     NavigationControls controls(window, &camera);
 
+    /////////////////////////On crée un point de lumière/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    glm::vec3 lightPosition(0., 0., 0.);
+    glm::vec3 lightColor(0.2f, 0.2f, 0.5f);
+    float lightPower = 3.f;
+    float reflectivity = 10.0f;
+    PointLight pointlight(lightPosition, lightColor, lightPower, reflectivity);
+    pointlight.Bind(&shader);
+
+    // Lumiere ambiante
+    shader.setUniform1f("intensityLight", 3.f);
+    shader.setUniform3fv("ambientLightColor", glm::vec3(0.2f, 0.2f, 0.5f));
+
+
+
+
     /////////////////////////Création des formes à afficher//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //////////// Définition des semiMajorAxis, eccentricity et angularVelocity des différentes planètes ////////////
@@ -192,16 +208,10 @@ int main()
         sun.rotationAngles.y=currentTime;
         controls.update(deltaTime, &shader);
         camera.computeMatrices(width, height);
+        camera.Bind(&shader);
 
         // Effacez l'image précédente une seule fois en dehors de la boucle de rendu
         renderer.Clear();
-
-        // Lumiere ambiante
-        float intensityLight = 3.;
-        glm::vec3 ambientLightColor(0.2f, 0.2f, 0.5f);
-        shader.setUniform3fv("ambientLightColor", ambientLightColor);
-        shader.setUniform1f("intensityLight", intensityLight);
-
 
         // MAJ des objets
         for (int k=0; k<planets.size(); k++) {

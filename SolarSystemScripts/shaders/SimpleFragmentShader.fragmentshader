@@ -1,23 +1,43 @@
 #version 330 core
 
 in vec2 UV;
-in vec4 objLum;
-in vec4 vecNormal;
-in vec4 objCamDir;
+in vec4 ObjLight;
+in vec4 Normal;
+in vec4 ObjCamDir;
 
 out vec3 color;
 
 uniform sampler2D myTextureSampler;
 
-uniform vec3 ambientLightColor;
+// Lumière ambiante
 uniform float intensityLight;
+uniform vec3 ambientLightColor;
 
+// Lumière diffuse & spéculaire
+uniform float lightPower;
+uniform float reflectivity;
+uniform vec3 lightColor;
 
 void main(){
 
     // Lumière ambiante
-    color = texture(myTextureSampler, UV).rgb * ambientLightColor * intensityLight;
+    vec3 texColor = texture(myTextureSampler, UV).rgb;
+    vec3 ambientLight = texColor * ambientLightColor * intensityLight;
 
+    // Lumière diffuse
+    vec3 objLumDir = normalize(ObjLight.xyz);
+    vec3 vecNormal = normalize(Normal.xyz);
+    float diff = clamp(dot(vecNormal, objLumDir), 0.0, 1.0);
+    vec3 diffuseLight = lightPower * diff * lightColor;
 
+    // Lumière spéculaire
+    vec3 objCamDir = normalize(ObjCamDir.xyz);
+    vec3 reflection = reflect(-objLumDir, vecNormal);
+    float specular = pow(max(dot(objCamDir, reflection), 0.0), reflectivity);
+    vec3 specularLight = lightPower * specular * lightColor;
+
+    // Couleur finale
+    float dist = length(ObjLight); // distance entre l'objet et la source
+    color = (ambientLight + (diffuseLight + specularLight) / pow(dist,2) ) * texColor;
 
 }

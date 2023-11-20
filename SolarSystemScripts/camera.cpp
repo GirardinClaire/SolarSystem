@@ -42,7 +42,8 @@ void Camera::setFoV(float a)
     FoV = a;
 }
 
-void Camera::Bind(Shader sh) const
+void Camera::Bind(Shader *shader) const
 {
-
+    shader->setUniform3fv("cameraPosition", position);
 }
+

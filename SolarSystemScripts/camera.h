@@ -19,7 +19,7 @@ public:
     glm::mat4 getViewMatrix() const;
     glm::mat4 getProjectionMatrix() const;
     void setFoV(float a);
-    void Bind(Shader sh) const;
+    void Bind(Shader *shader) const;
 
     glm::vec3 position;
     float horizontalAngle;
