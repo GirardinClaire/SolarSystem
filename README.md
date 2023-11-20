@@ -12,6 +12,7 @@ Système Solaire en C++/OpenGL
 - La lumière ambiante est fonctionnelle. Malheureusement les lumières diffuse et spéculaire n'engendrent pas d'erreur mais ne sont pas fonctionnelles.
 
 [ AMELIORATIONS ]
+
 Par la suite j'aimerais réussir à faire foncitonner les lumières diffuse et spéculaire, et également intégrer une interface pour l'utilisateur.
 
 
