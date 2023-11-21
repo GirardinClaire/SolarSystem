@@ -76,6 +76,7 @@ set_target_properties(SolarSystem PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BI
 #                navigationcontrols.h navigationcontrols.cpp
 #                fpscontrols.h fpscontrols.cpp
 #                planete.h planete.cpp
+#                pointLight.h pointLight.cpp
 #              )
 
 
